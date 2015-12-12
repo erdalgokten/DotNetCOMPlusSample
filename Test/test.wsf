@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<package xmlns="http://schemas.microsoft.com/WindowsScriptHost">
+	<job>
+		<script language="VBScript">
+            Dim comPlusClass
+            Set comPlusClass = CreateObject("DotNetCOMPlusSample.ComPlusClass")
+            Dim inoutObject
+            Dim inoutString
+            Dim inObject
+            Dim inString
+            Dim inArray
+            inArray = Array(0, "1", 2, "3", 4)
+            Dim inoutArray
+            Dim result
+            result = comPlusClass.Process(inoutObject, inoutString, inObject, inString, inArray, inoutArray)
+
+            Dim outputAsString
+            outputAsString = outputAsString + "Result:[" + CStr(result) + "] "
+            outputAsString = outputAsString + inoutArray(0, 0)
+
+            Dim i, j
+            For i = 1 To UBound(inoutArray, 1)
+                For j = 0 To UBound(inoutArray, 2)
+                    outputAsString = outputAsString + " " + CStr(inoutArray(i, j))
+                Next
+            Next
+
+            MsgBox outputAsString, , "Results"
+		</script>
+	</job>
+</package>
